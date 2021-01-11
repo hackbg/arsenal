@@ -30,4 +30,5 @@ fi
 
 if [ -e /home/hack_lenovo_03/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hack_lenovo_03/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-export GOPATH=/home/hack_lenovo_03/.go
+export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
