@@ -37,6 +37,8 @@ they can run as part of a Nix environment.
   Then run `make` and `make install` in checkout of [Wasmd](https://github.com/CosmWasm/wasmd/tree/v0.13.0).
 * CosmWasm: WTF: https://docs.cosmwasm.com/v0.13/getting-started/installation.html#wasmd
   Why do mainnet and testnet require different versions of `wasmd`?
+* CosmWasm: WTF: `make` fails due to linter errors
+* CosmWasm: WTF: `0.13.0` doesn't build `wasmcli`, only `wasmd`
 * Ganache: FIXME: `ganache.nix` deploys Ganache from [the official release](https://github.com/trufflesuite/ganache/releases/download/v2.5.4/ganache-2.5.4-linux-x86_64.AppImage).
   However, since it's an AppImage (type 2) of an Electron App, it fails to run
   inside Nix (with blank screen). So for now just run the AppImage outside of
