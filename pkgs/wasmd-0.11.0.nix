@@ -1,6 +1,6 @@
-{buildGoPackage
+{buildGoModule
 ,fetchFromGitHub
-}: buildGoPackage rec {
+}: buildGoModule rec {
   pname = "wasmd";
   version = "0.11.0";
   src = fetchFromGitHub {
@@ -9,9 +9,8 @@
     rev = "v${version}";
     sha256 = "150zg4paxq71jh5p71kg3nivw0hlm7qvh80ahpggwpc4acdcsig3";
   };
-  goPackagePath = "github.com/CosmWasm/wasmd";
   subPackages = ["cmd/wasmd" "cmd/wasmcli"];
-  goDeps = ./wasmd-0.11.0-deps.nix;
+  vendorSha256 = "1w8fmcshjajmpa9w8fnaqxfi6z4lj3ja5gx62hi206syv6l5wwcj";
 
   # this hides the /build/source directory, so that the fixup phase
   # knows to remove RPATH references to it from the resulting binaries

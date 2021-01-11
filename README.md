@@ -1,33 +1,44 @@
 # Instant development environment
 
-Overall goal: use [Nix](https://nixos.org/download.html) to define a
-100% reproducible, distro-agnostic development environment. However, some tools
-that take more liberties with the way they are packaged (most often those based
-on Electron or Go) need the proper build configuration to be divined before
-they can run as part of a Nix environment.
+Goal: use [Nix](https://nixos.org/download.html) to define a 100% reproducible,
+distro-agnostic development environment.
 
-## Architecture
+Challenge: Many platforms (such as Electron or Go) try to provide their own
+solution to dependency management as a "side quest" to their primary objective
+of being a general-purpose programming environment. However, this does not play
+well with Nix, whose _primary_ objective is solving dependency management.
 
-* [Nix](https://nixos.org/download.html) is installed via `curl|sh`,
-  and enabled in user environment via `~/.profile`
-* Everything is `.gitignore`d by default because this is based on my
-  home directory. Any paths that should be under version control
-  need to be explicitly specified in `.gitignore`
-* The environment's entry point is `shell.nix`. Run `nix-shell` to activate it.
-  See [NixOS Packages](https://search.nixos.org/packages) for package list.
+Thus, to get an instant environment with all the build tools and dependencies,
+some work must go into getting the languages' package managers to play along.
+
+## Quick start
+
+```sh
+curl -L https://nixos.org/nix/install | sh
+git clone git@github.com:hackbg/instant-environment.git
+cd instant-environment
+nix-shell
+```
 
 ## Features
 
 * Node support: `node 14.15.4`, `npm 6.14.10`, `yarn 1.22.10` in `shell.nix`.
 * Rust support: `rustup 1.23.1` in `shell.nix`.
 * Solidity support: `solc 0.7.1` in `shell.nix`.
-* `neovim.nix` specifies an installation of Neovim with plugins.
-  TODO: integrate vim-tmux-navigator
-* Individual files can be sought in the Nix repos with `nix-locate`
-  (after calling `nix-index` once.)
+* Neovim + plugins: `pkgs/neovim.nix` specifies an installation of Neovim with plugins.
+* TODO: integrate vim-tmux-navigator
 
-## Obstacles and observations
+## Obstacles, objections, and observations
 
+* Nix: `curl|sh`... really?
+* Git: BEWARE: Everything is `.gitignore`d by default because this is based on my
+  home directory. Any paths that should be under version control
+  need to be explicitly specified in `.gitignore`.
+* Nix: INFO: The environment's entry point is `shell.nix`. Run `nix-shell` to
+  activate it.
+* See [NixOS Packages](https://search.nixos.org/packages) for package list.
+  After calling `nix-index` once, individual files can be sought in the Nix
+  repos with `nix-locate`, which returns a list of packages containing the file.
 * CosmWasm: FIXME: Under Nix, `RPATH of wasmd contains forbidden reference to
   /build/` (which means it cannot be built reproducibly, or I'm not using the
   Nix+Go integration correctly).
