@@ -6,7 +6,6 @@
 !README.md
 !shell.nix
 !neovim.nix
-!ganache.nix
-!wasmd-0.11.0.nix
-!wasmd-0.13.0.nix
+!pkgs
+!pkgs/**/*
 !heidernet.env
