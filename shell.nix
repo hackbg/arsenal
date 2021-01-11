@@ -4,7 +4,7 @@ in pkgs.mkShell {
 
   nativeBuildInputs = with pkgs; [
     (pkgs.callPackage (import ./pkgs/wasmd-0.13.0.nix) {})
-    (pkgs.callPackage (import ./pkgs/ganache-cli.nix) {})
+    ((import ./pkgs/ganache-cli.nix) pkgs)
 
     # FIXME: those don't build under Nix out of the box:
     #(pkgs.callPackage (import ./pkgs/wasmd-0.11.0.nix) {})

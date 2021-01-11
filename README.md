@@ -16,6 +16,7 @@ following sections of the Nixpkgs manual detail how it's supposed to work,
 but they don't contain any details about what can go wrong and why:
 * [Nix+Go](https://nixos.org/manual/nixpkgs/stable/#sec-language-go)
 * [Nix+Node](https://nixos.org/manual/nixpkgs/stable/#node.js)
+* [More language-specific Nix helpers](https://nixos.wiki/wiki/Language-specific_package_helpers)
 
 ## Quick start
 
@@ -85,3 +86,6 @@ nix-shell
     It works fine outside of Nix, though.
   * ***WIP*** Package [ganache-cli](https://github.com/trufflesuite/ganache-cli)
     instead.
+    * Use `yarn import` to generate `yarn.lock` for projects that don't have it
+    * Use [the Haskell-based version of yarn2nix](https://github.com/Profpatsch/yarn2nix)
+      to generate frozen list of dependencies.
