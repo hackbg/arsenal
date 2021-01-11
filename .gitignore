@@ -1,3 +1,9 @@
 *
 !.gitignore
+!.profile
+!.bashrc
+!.tmux.conf
+!README.md
 !shell.nix
+!neovim.nix
+!ganache.nix
