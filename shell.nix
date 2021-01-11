@@ -3,12 +3,13 @@
 in pkgs.mkShell {
 
   nativeBuildInputs = with pkgs; [
-    neo-cowsay fortune # testing
-    git tig ripgrep
-    nodejs-14_x yarn
-    rustc cargo pkgconfig
-    ((import ./neovim.nix) pkgs)
-    ((import ./ganache.nix) pkgs)
+    neo-cowsay fortune            # testing
+    nix-index                     # find files in Nix repo
+    git tig ripgrep               # VCS and text manipulation
+    nodejs-14_x yarn              # Node platform
+    rustc cargo pkgconfig         # Rust platform
+    ((import ./neovim.nix) pkgs)  # Text editor
+    ((import ./ganache.nix) pkgs) # Local blockchain
   ];
 
   shellHook = ''
