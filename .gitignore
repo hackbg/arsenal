@@ -7,5 +7,6 @@
 !shell.nix
 !neovim.nix
 !ganache.nix
-!wasmd.nix
+!wasmd-0.11.0.nix
+!wasmd-0.13.0.nix
 !heidernet.env

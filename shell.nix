@@ -14,8 +14,9 @@ in pkgs.mkShell {
     solc                          # Solidity platform
     go_1_14                       # Go 1.14.12 as recommended by CosmWasm docs
 
+    (pkgs.callPackage (import ./wasmd-0.11.0.nix) {})
     # FIXME: those don't build under Nix out of the box:
-    #(pkgs.callPackage (import ./wasmd.nix) {})
+    #(pkgs.callPackage (import ./wasmd-0.13.0.nix) {})
     #((import ./ganache.nix) pkgs) # Local blockchain
   ];
 
@@ -24,4 +25,5 @@ in pkgs.mkShell {
     source heldernet.env
     fortune | cowsay
   '';
+
 }
