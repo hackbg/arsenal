@@ -43,34 +43,36 @@
     }))
   ];
 
-in (neovim.override {
-  vimAlias = true;
-  configure = {
-    customRC = ''
-      " set ttymouse=sgr
-      set noswapfile
-      set backspace=indent,eol,start mouse=a
-      set nowrap ts=2 sts=2 sw=2 et ai cc=80 foldcolumn=0
-      set fillchars+=vert:│
-      set splitbelow splitright
-      map ; :
-      map <Leader><Tab> :NERDTreeToggle<CR>
-      map <Leader>' :TagbarToggle<CR>
-      map <Leader>h :nohl<cr>
-      map <C-_> :Commentary<CR>
-      map <C-s> :w<CR>
+in [
+  (neovim.override {
+    vimAlias = true;
+    configure = {
+      customRC = ''
+        " set ttymouse=sgr
+        set noswapfile
+        set backspace=indent,eol,start mouse=a
+        set nowrap ts=2 sts=2 sw=2 et ai cc=80 foldcolumn=0
+        set fillchars+=vert:│
+        set splitbelow splitright
+        map ; :
+        map <Leader><Tab> :NERDTreeToggle<CR>
+        map <Leader>' :TagbarToggle<CR>
+        map <Leader>h :nohl<cr>
+        map <C-_> :Commentary<CR>
+        map <C-s> :w<CR>
 
-      set statusline+=%#warningmsg#
-      set statusline+=%{SyntasticStatuslineFlag()}
-      set statusline+=%*
-      let g:syntastic_always_populate_loc_list = 0
-      let g:syntastic_auto_loc_list = 0
-      let g:syntastic_check_on_open = 0
-      let g:syntastic_check_on_wq = 0
-    '';
-    packages.myPlugins = with vimPlugins; {
-      start = plugins ++ extraPlugins;
-      opt = [];
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+        let g:syntastic_always_populate_loc_list = 0
+        let g:syntastic_auto_loc_list = 0
+        let g:syntastic_check_on_open = 0
+        let g:syntastic_check_on_wq = 0
+      '';
+      packages.myPlugins = with vimPlugins; {
+        start = plugins ++ extraPlugins;
+        opt = [];
+      };
     };
-  };
-})
+  })
+]

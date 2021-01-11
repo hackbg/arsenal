@@ -1,4 +1,4 @@
-pkgs: pkgs.appimageTools.wrapType2 {
+{appimageTools, pkgs}: pkgs.appimageTools.wrapType2 {
   name = "ganache";
   src = pkgs.fetchurl {
     url = "https://github.com/trufflesuite/ganache/releases/download/v2.5.4/ganache-2.5.4-linux-x86_64.AppImage";
