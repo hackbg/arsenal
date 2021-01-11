@@ -7,3 +7,4 @@
 !shell.nix
 !neovim.nix
 !ganache.nix
+!wasmd.nix

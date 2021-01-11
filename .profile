@@ -29,3 +29,5 @@ fi
 # source "$HOME/.cargo/env"
 
 if [ -e /home/hack_lenovo_03/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hack_lenovo_03/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export GOPATH=/home/hack_lenovo_03/.go
