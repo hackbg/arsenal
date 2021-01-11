@@ -8,3 +8,4 @@
 !neovim.nix
 !ganache.nix
 !wasmd.nix
+!heidernet.env

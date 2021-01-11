@@ -28,13 +28,18 @@ they can run as part of a Nix environment.
 
 ## Obstacles and observations
 
-* CosmWasm: FIXME: `RPATH of wasmd contains forbidden reference to /build/`
-  (which means it cannot be built reproducibly, or I'm not using the Nix+Go
-  integration correctly). So for now just build it outside of Nix, which
-  requires Go (`snap install go` for v1.15), Make, GCC,
-  [golangci-lint](https://golangci-lint.run/usage/install/#linux-and-windows).
-  `GOPATH` must be set (`export GOPATH=/home/username/.go` in `~/.profile`).
-  Then run `make` and `make install` in checkout of [Wasmd](https://github.com/CosmWasm/wasmd/tree/v0.13.0).
+* CosmWasm: FIXME: Under Nix, `RPATH of wasmd contains forbidden reference to
+  /build/` (which means it cannot be built reproducibly, or I'm not using the
+  Nix+Go integration correctly).
+* CosmWasm: to build outside of Nix, you need `snap install go`,
+  `apt install make gcc`, and maybe [golangci-lint](https://golangci-lint.run/usage/install/#linux-and-windows)
+  which is installed with another `curl|sh` (and here I am thinking one such
+  invocation is already too many)
+* CosmWasm: Make sure`GOPATH` is set (`export GOPATH=/home/username/.go` in
+  `~/.profile`). Then run `make install` in a checkout of [Wasmd](https://github.com/CosmWasm/wasmd/tree/v0.13.0)
+  as per [the docs](https://docs.cosmwasm.com/0.13/getting-started/installation.html).
+* CosmWasm: WTF: Ubuntu 20.04.1 doesn't provide `Go 1.14`;
+  just `1.15` in snap and 2 variants of `1.13` in apt
 * CosmWasm: WTF: https://docs.cosmwasm.com/v0.13/getting-started/installation.html#wasmd
   Why do mainnet and testnet require different versions of `wasmd`?
 * CosmWasm: WTF: `make` fails due to linter errors

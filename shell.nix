@@ -20,7 +20,8 @@ in pkgs.mkShell {
   ];
 
   shellHook = ''
-    fortune | cowsay
     rustup target add wasm32-unknown-unknown
+    source heldernet.env
+    fortune | cowsay
   '';
 }
