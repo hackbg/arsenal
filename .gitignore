@@ -8,4 +8,4 @@
 !neovim.nix
 !pkgs
 !pkgs/**/*
-!heidernet.env
+!heldernet.env
