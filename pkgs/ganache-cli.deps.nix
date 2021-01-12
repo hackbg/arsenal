@@ -2736,15 +2736,9 @@
           (s."ini@^1.3.4")
           ];
         "global-dirs@^0.1.0" = s."global-dirs@0.1.1";
-        "global-modules@1.0.0" = f "global-modules" "1.0.0" y "6d770f0eb523ac78164d72b5e71a8877265cc3ea" [
-          (s."global-prefix@^1.0.1")
-          (s."is-windows@^1.0.1")
-          (s."resolve-dir@^1.0.0")
-          ];
         "global-modules@2.0.0" = f "global-modules" "2.0.0" y "997605ad2345f27f51539bea26574421215c7780" [
           (s."global-prefix@^3.0.0")
           ];
-        "global-modules@^1.0.0" = s."global-modules@1.0.0";
         "global-modules@^2.0.0" = s."global-modules@2.0.0";
         "global-prefix@1.0.2" = f "global-prefix" "1.0.2" y "dbf743c6c14992593c655568cb66ed32c0122ebe" [
           (s."expand-tilde@^2.0.2")
