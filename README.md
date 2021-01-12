@@ -46,6 +46,7 @@ nix-shell
   * ***WARNING*** Everything is `.gitignore`d by default because this is
     based on my home directory. Any paths that should be under version control
     need to be explicitly specified in `.gitignore`.
+  * ***TODO*** May need to use submodules at some point, which are clunky
 
 * Nix
   * ***WARNING*** `curl|sh`... really?
@@ -86,6 +87,11 @@ nix-shell
     It works fine outside of Nix, though.
   * ***WIP*** Package [ganache-cli](https://github.com/trufflesuite/ganache-cli)
     instead.
-    * Use `yarn import` to generate `yarn.lock` for projects that don't have it
-    * Use [the Haskell-based version of yarn2nix](https://github.com/Profpatsch/yarn2nix)
-      to generate frozen list of dependencies.
+    * ***WIP***: use `yarn import` to generate `yarn.lock` for projects that don't
+      have it, then use [the Haskell version of yarn2nix](https://github.com/Profpatsch/yarn2nix)
+      to generate frozen list of dependencies. (This failed to handle a circular
+      dependency between `global-modules@^1.0.0` and `resolve-dir@1.0.1` in
+      Webpack)
+    * ***WIP***: Trying [Napalm](https://github.com/nmattia/napalm).
+      Doesn't seem to handle `git://` dependencies.
+    * ***WIP***: Trying [node2nix](https://github.com/svanderburg/node2nix)
