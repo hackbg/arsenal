@@ -12,7 +12,7 @@ in pkgs.mkShell {
     #(pkgs.callPackage (import ./pkgs/ganache.nix) {}) # Local blockchain
   ] ++ ((import ./pkgs/utilities.nix) pkgs)
     ++ ((import ./pkgs/neovim.nix) pkgs)
-    #++ ((import ./pkgs/node.nix) pkgs)
+    ++ ((import ./pkgs/node.nix) pkgs)
     #++ ((import ./pkgs/rust.nix) pkgs)
     #++ ((import ./pkgs/go.nix) pkgs)
     #++ ((import ./pkgs/solidity.nix) pkgs)
