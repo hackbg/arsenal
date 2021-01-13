@@ -41,6 +41,12 @@
       rev    = "569bbbedc3898236d5912fed0caf114936112ae4";
       sha256 = "1qpfbbrm4gjgvbkimhpxyl4fsdqkyw4raf17nw0ibqillz2d3pxx";
     }))
+    (plugin "acme-colors" "2021-01-12" (fetchFromGitHub {
+      owner  = "plan9-for-vimspace";
+      repo   = "acme-colors";
+      rev    = "de3c6963339114bea7ab61cc02522885d5809b44";
+      sha256 = "0fr4dh95c32hqwk0zfza2fx949x3s7rgigb7f6g0y31njv957dr3";
+    }))
   ];
 
 in [

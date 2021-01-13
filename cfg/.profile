@@ -32,3 +32,6 @@ if [ -e /home/hack_lenovo_03/.nix-profile/etc/profile.d/nix.sh ]; then . /home/h
 
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
+
+# allow ~/.local/bin
+export PATH="$HOME/.local/bin:$PATH"
