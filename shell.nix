@@ -24,6 +24,7 @@ in pkgs.mkShell {
     fortune | cowsay
     #tmux attach || tmux
     #exit
+    ${builtins.readFile (./. + "/cfg/prompt.sh")}
   '';
 
   EDITOR = "nvim";
