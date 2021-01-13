@@ -20,10 +20,12 @@ in pkgs.mkShell {
 
   shellHook = ''
     #rustup target add wasm32-unknown-unknown
-    source heldernet.env
+    ${builtins.readFile (./. + "/cfg/heldernet.env")}
     fortune | cowsay
     #tmux attach || tmux
     #exit
   '';
+
+  EDITOR = "nvim";
 
 }
