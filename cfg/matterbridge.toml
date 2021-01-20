@@ -1,0 +1,4 @@
+[irc.myirc]
+Server="localhost:6667"
+Nick="bridge"
+RemoteNickFormat="[{PROTOCOL}] <{NICK}> "

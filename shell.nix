@@ -2,7 +2,9 @@
 
 in pkgs.mkShell {
 
-  nativeBuildInputs = with pkgs; [
+  nativeBuildInputs = let
+    pkglist = x: ((import (./pkgs + "/${x}")) pkgs);
+  in with pkgs; [
     #(pkgs.callPackage (import ./pkgs/wasmd-0.13.0.nix)      {})
     #(pkgs.callPackage (import ./pkgs/ganache-cli.node2.nix) {})
 
@@ -10,22 +12,24 @@ in pkgs.mkShell {
     #(pkgs.callPackage (import ./pkgs/wasmd-0.11.0.nix) {})
     #(pkgs.callPackage (import ./pkgs/wasmd-0.13.0.nix) {})
     #(pkgs.callPackage (import ./pkgs/ganache.nix) {}) # Local blockchain
-  ] ++ ((import ./pkgs/utilities.nix) pkgs)
-    ++ ((import ./pkgs/neovim.nix) pkgs)
-    ++ ((import ./pkgs/node.nix) pkgs)
-    #++ ((import ./pkgs/rust.nix) pkgs)
+
+    entr
+  ] ++ (pkglist "utilities.nix")
+    ++ (pkglist "neovim.nix")
+    ++ (pkglist "node.nix")
+    ++ (pkglist "rust.nix")
     #++ ((import ./pkgs/go.nix) pkgs)
     #++ ((import ./pkgs/solidity.nix) pkgs)
     ;
 
-  shellHook = ''
-    #rustup target add wasm32-unknown-unknown
-    ${builtins.readFile (./. + "/cfg/heldernet.env")}
-    fortune | cowsay
-    #tmux attach || tmux
-    #exit
-    ${builtins.readFile (./. + "/cfg/prompt.sh")}
-  '';
+  shellHook = let
+    cfg = path: builtins.readFile (./cfg + "/${path}");
+  in builtins.concatStringsSep "\n" [
+    (cfg "alias.sh")
+    (cfg "prompt.sh")
+    (cfg "rust.sh")
+    "fortune | cowsay"
+  ];
 
   EDITOR = "nvim";
 

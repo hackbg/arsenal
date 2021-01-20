@@ -1,0 +1,14 @@
+[Unit]
+Description=irc
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+#ExecStartPre=/usr/bin/docker pull inspircd/inspircd-docker:latest
+ExecStart=docker run \
+  -t --rm --name %n -u %U \
+  -p 6667:6667 \
+  -e "INSP_NET_NAME=hacknet" \
+  inspircd/inspircd-docker

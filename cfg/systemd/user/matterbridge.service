@@ -1,0 +1,14 @@
+[Unit]
+Description=Mattermost
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=mkdir -p %h/.config/matterbridge
+#ExecStartPre=/usr/bin/docker pull 42wim/matterbridge
+ExecStart=/usr/bin/docker run \
+  -t --rm --name %n -u %U \
+  --mount "type=bind,source=%h/.config/matterbridge,target=/etc/matterbridge" \
+  42wim/matterbridge

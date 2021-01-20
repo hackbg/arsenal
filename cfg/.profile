@@ -35,3 +35,5 @@ export PATH="$GOPATH/bin:$PATH"
 
 # allow ~/.local/bin
 export PATH="$HOME/.local/bin:$PATH"
+
+source "$HOME/shell/cfg/prompt.sh"

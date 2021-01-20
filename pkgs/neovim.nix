@@ -2,6 +2,7 @@
 ,vimPlugins
 ,vimUtils
 ,fetchFromGitHub
+,universal-ctags
 ,...}: let
 
   nativeRC = builtins.readFile (./. + "/../cfg/init.vim");
@@ -46,6 +47,7 @@
   ];
 
   pluginsRC = ''
+
     map <Leader><Tab> :NERDTreeToggle<CR>
     map <Leader>' :TagbarToggle<CR>
     map <Leader>h :nohl<cr>
@@ -71,4 +73,5 @@ in [
       };
     };
   })
+  universal-ctags
 ]
