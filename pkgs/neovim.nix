@@ -7,27 +7,35 @@
 
   nativeRC = builtins.readFile (./. + "/../cfg/init.vim");
 
-  plugins = with vimPlugins; [
-    nerdcommenter
-    nerdtree
-    rust-vim
-    syntastic
-    tagbar
-    vim-markdown
-    vim-nerdtree-tabs
-    vim-nix
-    vim-pug
-    vim-tmux
-    vim-tmux-navigator
-    vim-toml
-  ];
+  plugins = let
 
-  extraPlugins = let
     plugin = pname: version: src:
       vimUtils.buildVimPluginFrom2Nix { inherit pname version src; };
+
     gh = owner: repo: rev: sha256:
       fetchFromGitHub { inherit owner repo rev sha256; };
-  in [
+
+  in with vimPlugins; [
+
+    # editing features
+    syntastic     # https://github.com/vim-syntastic/syntastic
+    nerdcommenter # https://github.com/preservim/nerdcommenter
+    tagbar
+
+    # environment features
+    nerdtree
+    vim-nerdtree-tabs
+    vim-tmux
+    vim-tmux-navigator
+    bufexplorer
+
+    # language support
+    tabular
+    vim-markdown
+    rust-vim
+    vim-nix
+    vim-pug
+    vim-toml
     (plugin "vim-stylus" "2020-01-21" (gh
       "iloginow" "vim-stylus"
       "0e457b09db55d3518703bb22e1555872c5c44b7a"
@@ -40,13 +48,18 @@
       "tomlion" "vim-solidity"
       "569bbbedc3898236d5912fed0caf114936112ae4"
       "1qpfbbrm4gjgvbkimhpxyl4fsdqkyw4raf17nw0ibqillz2d3pxx"))
+
+    # themes
+    gruvbox
     (plugin "acme-colors" "2021-01-12" (gh
       "plan9-for-vimspace" "acme-colors"
       "de3c6963339114bea7ab61cc02522885d5809b44"
       "0fr4dh95c32hqwk0zfza2fx949x3s7rgigb7f6g0y31njv957dr3"))
+
   ];
 
   pluginsRC = ''
+    set nofoldenable
 
     map <Leader><Tab> :NERDTreeToggle<CR>
     map <Leader>' :TagbarToggle<CR>
@@ -60,6 +73,8 @@
     let g:syntastic_auto_loc_list = 0
     let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
+
+    colorscheme gruvbox
   '';
 
 in [
@@ -67,10 +82,7 @@ in [
     vimAlias = true;
     configure = {
       customRC = nativeRC + pluginsRC;
-      packages.myPlugins = with vimPlugins; {
-        start = plugins ++ extraPlugins;
-        opt = [];
-      };
+      packages.myPlugins = with vimPlugins; { start = plugins; opt = []; };
     };
   })
   universal-ctags
