@@ -1,1 +1,1 @@
-pkgs: with pkgs; [ rustup ]
+pkgs: with pkgs; [ rustup binaryen ]
