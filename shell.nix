@@ -14,10 +14,12 @@ in pkgs.mkShell {
     #(pkgs.callPackage (import ./pkgs/ganache.nix) {}) # Local blockchain
 
     entr
+    cloc
   ] ++ (pkglist "utilities.nix")
     ++ (pkglist "neovim.nix")
     ++ (pkglist "node.nix")
     ++ (pkglist "rust.nix")
+    ++ (pkglist "wireshark.nix")
     #++ ((import ./pkgs/go.nix) pkgs)
     #++ ((import ./pkgs/solidity.nix) pkgs)
     ;

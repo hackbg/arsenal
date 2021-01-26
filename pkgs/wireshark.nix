@@ -1,0 +1,6 @@
+{wireshark
+,tcpdump
+,...}: [
+  wireshark
+  tcpdump
+]
