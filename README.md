@@ -1,5 +1,8 @@
 # Instant development environment
 
+This is supposed to be a way to quickly get all the tools you need
+to work on our current projects. However it's only partially complete.
+
 ## Quick start
 1. Get Nix
   * Mac: https://wickedchicken.github.io/post/macos-nix-setup/
@@ -11,101 +14,62 @@ git clone git@github.com:hackbg/instant-environment.git shell
 cd shell
 nix-shell
 ```
+3. If your terminal supports profiles, you can create a profile to run
+`nix-shell --command tmux $PATH_TO_REPO/shell.nix` and your starting point
+will be a `tmux` inside this environment.
+  * Try `nix-shell --command 'tmux attach||tmux' shell/shell.nix` to make it
+    persistent across terminal restarts.
 
-## Info
+## What works
 
-**Goal:** use [Nix](https://nixos.org/download.html) to define a 100% reproducible,
-distro-agnostic development environment.
+* `shell.nix` defines what happens when you run `nix-shell` in the repo root.
+  1. Make available the software requested in:
+    * `pkgs/utilities.nix`: Git, RipGrep, Tmux, Nix-Index, Entr, CLOC
+    * `pkgs/node.nix`: adds `node 14.15.4`, `npm 6.14.10`, `yarn 1.22.10`.
+    * `pkgs/rust.nix`: adds `rustup 1.23.1` with settings for current CosmWasm projects.
+    * `pkgs/solidity.nix`: adds `solc 0.7.1`.
+    * `pkgs/neovim.nix`: NeoVim + plugins
+  2. Activate configuration from `cfg/`
+    * This sets Rust to `nightly` and `wasm32-unknown-unknown`,
+      and may check some Rust components for updates.
+* Docker (provided by your OS) still works fine under Nix because it's based
+  on monolithic artifacts that contain their own "static copy of the universe".
+  * However `shell.nix` is unable to install its own Docker daemon just yet
 
-**Challenge:** Many platforms (e.g. Electron, Go) try to provide their own
-solution to dependency management as a "side quest" to their primary objective
-of being a general-purpose programming environment. However, this does not play
-well with Nix, whose _primary_ objective is solving dependency management by
-disallowing non-reproducible builds via disabling most side effects (such as
-network requests at build time).
+## What might not
+* If you also have `rustup` installed outside of Nix, they might conflict
+  with each other other (`GLIBC_2_32 not found`, etc.)
+  * I wonder whether native binaries built by Rust inside the shell
+    should link to the host system's libraries or to the ones provided by Nix.
+  * This only matters for production releases of off-chain software, since
+    of what we're working on is distributed between us in source form anyway.
 
-Thus, to get an instant environment with all the build tools and dependencies,
-the languages' package managers must be made to play along with Nix. The
-following sections of the Nixpkgs manual detail how it's supposed to work,
-but they don't contain any details about what can go wrong and why:
-* [Nix+Go](https://nixos.org/manual/nixpkgs/stable/#sec-language-go)
-* [Nix+Node](https://nixos.org/manual/nixpkgs/stable/#node.js)
-* [More language-specific Nix helpers](https://nixos.wiki/wiki/Language-specific_package_helpers)
-
-## Quick start
-
-```sh
-curl -L https://nixos.org/nix/install | sh
-git clone git@github.com:hackbg/instant-environment.git
-cd instant-environment
-nix-shell
-```
-
-## Features
-
-* `pkgs/node.nix`: adds `node 14.15.4`, `npm 6.14.10`, `yarn 1.22.10`.
-* `pkgs/rust.nix`: adds `rustup 1.23.1`
-  * ***INFO*** `shellHook` in shell.nix activates `wasm32-unknown-unknown` target
-  * ***FIXME*** this rustup can conflict with non-Nix-based one, so toolchains
-    installed through one might not work with the other
-    (GLIBC_2_32 not found, etc)
-* `pkgs/solidity.nix`: adds `solc 0.7.1`.
-* `pkgs/neovim.nix`: adds NeoVim + plugins
-* `pkgs/utilities.nix`: misc stuff
-  * ***TODO*** integrate vim-tmux-navigator
-
-## Obstacles, objections, and observations
-
-* Git
-  * ***WARNING*** Everything is `.gitignore`d by default because this is
-    based on my home directory. Any paths that should be under version control
-    need to be explicitly specified in `.gitignore`.
-  * ***TODO*** May need to use submodules at some point, which are clunky
-
-* Nix
-  * ***WARNING*** `curl|sh`... really?
-  * ***HOWTO*** The environment's entry point is `shell.nix`.
-    Run `nix-shell` to activate it.
-  * ***HOWTO*** See [NixOS Packages](https://search.nixos.org/packages) for
-    package list. After calling `nix-index` once, individual files can be sought
-    in the Nix repos with `nix-locate`, which returns a list of packages
-    containing the file.
-
-* CosmWasm
-  * ***FIXME*** Under Nix, `RPATH of wasmd contains forbidden reference
-    to /build/` (which means it cannot be built reproducibly, or I'm not using the
-    Nix+Go integration correctly).
-    * **FIXME** After fixing by renaming the `/build/source` temporary dir to
-      something else, the binary fails to find the `go-cosmwasm` (0.11) a.k.a.
-      `wasmvm` (0.13) library from [here](https://github.com/CosmWasm/wasmvm).
-  * ***HOWTO*** to build outside of Nix, you need `snap install go`,
-    `apt install make gcc`, and maybe [golangci-lint](https://golangci-lint.run/usage/install/#linux-and-windows)
-    which is installed with another `curl|sh` (and here I am thinking one such
-    invocation is already too many)
-  * ***HOWTO*** Make sure `GOPATH` is set
-    (`export GOPATH=/home/username/.go` in `~/.profile`).
-    Then run `make install` in a checkout of [Wasmd](https://github.com/CosmWasm/wasmd/tree/v0.13.0)
-    as per [the docs](https://docs.cosmwasm.com/0.13/getting-started/installation.html).
-  * ***WTF*** Ubuntu 20.04.1 doesn't provide `Go 1.14`;
-    just `1.15` in snap and 2 variants of `1.13` in apt
-  * ***WTF***  Why do mainnet and testnet [require different versions
-    of `wasmd`](https://docs.cosmwasm.com/v0.13/getting-started/installation.html#wasmd)?
-  * ***WTF*** `make` fails due to linter errors
-  * ***WTF*** `0.13.0` doesn't contain `wasmcli` anymore, only `wasmd`?
-
-* Ganache
-  * ***FIXME*** `pkgs/ganache.nix` deploys Ganache from
-    [the official release](https://github.com/trufflesuite/ganache/releases/download/v2.5.4/ganache-2.5.4-linux-x86_64.AppImage).
-    The artifact is a Type 2 AppImage of an Electron App.
-    This fails to run inside Nix, showing a blank screen instead.
-    It works fine outside of Nix, though.
-  * ***WIP*** Package [ganache-cli](https://github.com/trufflesuite/ganache-cli)
-    instead.
-    * ***WIP***: use `yarn import` to generate `yarn.lock` for projects that don't
-      have it, then use [the Haskell version of yarn2nix](https://github.com/Profpatsch/yarn2nix)
-      to generate frozen list of dependencies. (This failed to handle a circular
-      dependency between `global-modules@^1.0.0` and `resolve-dir@1.0.1` in
-      Webpack)
-    * ***WIP***: Trying [Napalm](https://github.com/nmattia/napalm).
-      Doesn't seem to handle `git://` dependencies.
-    * ***WIP***: Trying [node2nix](https://github.com/svanderburg/node2nix)
+## What should be fixed
+* This is a preliminary effort, `default.nix`/`shell.nix` for individual
+  projects might make more sense. This gives you instant dev environments and
+  reproducible builds in one package.
+  * [NixPkgs](https://github.com/NixOS/nixpkgs) is a huge (larger than AUR!)
+    collection of (mostly) up-to-date software
+      * [Search in NixPkgs](https://search.nixos.org/packages) here
+      * use `nix-index` and `nix-locate --top-level` to search in your local copy
+      * Nix needs "valid build instructions for the whole universe" so that it can
+        works IF AND ONLY IF meaningfully reproducible builds are possible.
+      * https://github.com/crev-dev/cargo-crev might also need to be integrated along the way
+* Somebody should have invented this earlier, because while NixPkgs maintainers
+  were amassing a corpus of build instructions for the whole stack, the goalposts moved.
+  * The brokenness of the pre-Nix distro model has caused every language to
+    evolve its own OS-independent package manager. Nix makes an attempt to
+    [integrate with some of those](https://nixos.org/manual/nixpkgs/stable/#chap-language-support),
+    which I personally find half-hearted.
+    * In some important cases, such as Node, Electron, and Go, this is still
+      more difficult than it ought to be.
+      * Maybe I just don't "get it" but the docs don't help much either.
+      * [Nix+Go](https://nixos.org/manual/nixpkgs/stable/#sec-language-go)
+      * [Nix+Node](https://nixos.org/manual/nixpkgs/stable/#node.js)
+      * [More language-specific Nix helpers](https://nixos.wiki/wiki/Language-specific_package_helpers)
+      * The solution are `fixed output derivations`: when writing a Nix package
+        that uses `yarn`, `npm`, any package manager that accesses the network
+        really, just let it do that and provide SHA256 sums for __both__ the
+        input and the output.
+        * In theory, this is enough to allow Nix to work with any package, even
+          binary blobs (AppImages under NixOS are another story...)

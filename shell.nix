@@ -20,8 +20,8 @@ in pkgs.mkShell {
     ++ (pkglist "node.nix")
     ++ (pkglist "rust.nix")
     ++ (pkglist "wireshark.nix")
-    #++ ((import ./pkgs/go.nix) pkgs)
-    #++ ((import ./pkgs/solidity.nix) pkgs)
+    #++ (pkglist (./pkgs/go.nix) pkgs)
+    ++ (pkglist "solidity.nix")
     ;
 
   shellHook = let
@@ -34,5 +34,6 @@ in pkgs.mkShell {
   ];
 
   EDITOR = "nvim";
+
 
 }

@@ -1,4 +1,10 @@
-#rustup target add wasm32-unknown-unknown
-rustup default nightly
+rustup target add wasm32-unknown-unknown
 export RUST_BACKTRACE=1
-export RUSTFLAGS='-Z macro-backtrace'
+
+rustup default nightly
+export RUSTFLAGS="-Zmacro-backtrace"
+
+rustup component add llvm-tools-preview
+#export RUSTFLAGS="$RUSTFLAGS -Zinstrument-coverage"
+cargo install grcov
+export PATH="$PATH:$HOME/.cargo/bin"

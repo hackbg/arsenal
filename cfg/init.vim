@@ -6,3 +6,10 @@ set fillchars+=vert:│
 set splitbelow splitright
 map ; :
 map <C-s> :w<CR>
+
+autocmd VimResized * wincmd =
+
+set cursorline
+set cursorcolumn
+
+map <Leader>\ :set cursorcolumn!<Bar>set cursorline!<CR>
