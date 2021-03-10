@@ -1,6 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }: let
-
-in pkgs.mkShell {
+{pkgs?import<nixpkgs>{}}:pkgs.mkShell{
 
   nativeBuildInputs = let
     pkglist = x: ((import (./pkgs + "/${x}")) pkgs);
@@ -34,6 +32,4 @@ in pkgs.mkShell {
   ];
 
   EDITOR = "nvim";
-
-
 }

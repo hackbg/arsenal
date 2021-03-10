@@ -1,3 +1,5 @@
+rustup update
+
 rustup target add wasm32-unknown-unknown
 export RUST_BACKTRACE=1
 
