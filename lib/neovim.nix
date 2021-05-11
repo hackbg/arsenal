@@ -5,7 +5,7 @@
 ,universal-ctags
 ,...}: let
 
-  nativeRC = builtins.readFile (./. + "/../cfg/init.vim");
+  nativeRC = builtins.readFile ./init.vim;
 
   plugins = let
 
@@ -36,6 +36,7 @@
     vim-nix
     vim-pug
     vim-toml
+    plantuml-syntax
     (plugin "vim-stylus" "2020-01-21" (gh
       "iloginow" "vim-stylus"
       "0e457b09db55d3518703bb22e1555872c5c44b7a"
