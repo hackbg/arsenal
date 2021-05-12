@@ -13,6 +13,15 @@ in pkgs.mkShell {
     ./lib/rust.nix
   ];
 
+  LD_LIBRARY_PATH = pkgs.lib.strings.makeLibraryPath (with pkgs; [
+    xorg.libxcb
+    xorg.libXcursor
+    xorg.libXrandr
+    xorg.libXi
+    xlibs.libX11
+    libglvnd
+  ]);
+
   shellHook = arsenal.environment [
     ./lib/alias.sh
     ./lib/prompt.sh
