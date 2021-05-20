@@ -8,5 +8,5 @@ export RUSTFLAGS="-Zmacro-backtrace"
 
 rustup component add llvm-tools-preview
 #export RUSTFLAGS="$RUSTFLAGS -Zinstrument-coverage"
-cargo install grcov
+#cargo install grcov
 export PATH="$PATH:$HOME/.cargo/bin"
