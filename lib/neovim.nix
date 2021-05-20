@@ -36,6 +36,7 @@
     vim-nix
     vim-pug
     vim-toml
+    vim-glsl
     plantuml-syntax
     (plugin "vim-stylus" "2020-01-21" (gh
       "iloginow" "vim-stylus"
