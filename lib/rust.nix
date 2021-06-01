@@ -1,8 +1,12 @@
 pkgs: with pkgs; [
 
+  # installs rust toolchain
   rustup
+
+  # webassembly tools
   binaryen
   wabt
+  wasm-pack
 
   # cargo-tarpaulin # 0.17.0 - broken, yanked from crates.io
   # build newer version
@@ -30,5 +34,21 @@ pkgs: with pkgs; [
       platforms   = [ "x86_64-linux" ];
     };
   }) {})
+
+  # required to compile tauri
+  pkg-config
+  openssl
+  glib
+  cairo
+  pango
+  atk
+  gdk-pixbuf
+  gnome3.libsoup
+  gtk3-x11
+  gnome3.gtksourceview
+  libappindicator-gtk3
+  gnome3.webkitgtk
+  clang
+  llvm
 
 ]

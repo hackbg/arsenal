@@ -22,6 +22,8 @@ in pkgs.mkShell {
     libglvnd
   ]);
 
+  LIBCLANG_PATH = "${pkgs.llvmPackages.libclang}/lib";
+
   shellHook = arsenal.environment [
     ./lib/alias.sh
     ./lib/prompt.sh
