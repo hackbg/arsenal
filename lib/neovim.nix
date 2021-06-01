@@ -28,6 +28,7 @@
     vim-tmux
     vim-tmux-navigator
     bufexplorer
+    airline
 
     # language support
     tabular
