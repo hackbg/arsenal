@@ -18,9 +18,13 @@
   in with vimPlugins; [
 
     # editing features
-    syntastic     # https://github.com/vim-syntastic/syntastic
+    #syntastic     # https://github.com/vim-syntastic/syntastic
     nerdcommenter # https://github.com/preservim/nerdcommenter
     tagbar
+    ale
+    coc-nvim
+    coc-rls
+    coc-tsserver
 
     # environment features
     nerdtree

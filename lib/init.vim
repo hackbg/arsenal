@@ -1,3 +1,5 @@
+" TODO: select COC commands from https://github.com/neoclide/coc.nvim#example-vim-configuration
+
 " set ttymouse=sgr
 set noswapfile
 set backspace=indent,eol,start mouse=a
@@ -13,3 +15,5 @@ set cursorline
 set cursorcolumn
 
 map <Leader>\ :set cursorcolumn!<Bar>set cursorline!<CR>
+
+set undofile
