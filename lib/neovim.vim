@@ -1,4 +1,3 @@
-
 " set ttymouse=sgr
 set noswapfile
 set backspace=indent,eol,start mouse=a
@@ -25,3 +24,26 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 hi ALEError cterm=italic ctermbg=16
+
+" remember cursor position
+augroup cursor
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+set nofoldenable
+
+map <Leader><Tab> :NERDTreeToggle<CR>
+map <Leader>' :TagbarToggle<CR>
+map <Leader>h :nohl<cr>
+map <C-_> :Commentary<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+colorscheme gruvbox

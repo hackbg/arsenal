@@ -5,16 +5,9 @@
 ,universal-ctags
 ,...}: let
 
-  nativeRC = builtins.readFile ./init.vim;
-
   plugins = let
-
-    plugin = pname: version: src:
-      vimUtils.buildVimPluginFrom2Nix { inherit pname version src; };
-
-    gh = owner: repo: rev: sha256:
-      fetchFromGitHub { inherit owner repo rev sha256; };
-
+    plugin = pname: version: src: vimUtils.buildVimPluginFrom2Nix { inherit pname version src; };
+    gh = owner: repo: rev: sha256: fetchFromGitHub { inherit owner repo rev sha256; };
   in with vimPlugins; [
 
     # editing features
@@ -43,6 +36,7 @@
     vim-toml
     vim-glsl
     plantuml-syntax
+
     (plugin "vim-stylus" "2020-01-21" (gh
       "iloginow" "vim-stylus"
       "0e457b09db55d3518703bb22e1555872c5c44b7a"
@@ -65,32 +59,13 @@
 
   ];
 
-  pluginsRC = ''
-    set nofoldenable
-
-    map <Leader><Tab> :NERDTreeToggle<CR>
-    map <Leader>' :TagbarToggle<CR>
-    map <Leader>h :nohl<cr>
-    map <C-_> :Commentary<CR>
-
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-    let g:syntastic_always_populate_loc_list = 0
-    let g:syntastic_auto_loc_list = 0
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-
-    colorscheme gruvbox
-  '';
-
 in [
+
   (neovim.override {
     vimAlias = true;
-    configure = {
-      customRC = nativeRC + pluginsRC;
-      packages.myPlugins = with vimPlugins; { start = plugins; opt = []; };
-    };
-  })
-  universal-ctags
+    configure = { customRC = builtins.readFile ./neovim.vim
+                ; packages.myPlugins = with vimPlugins; { start = plugins; opt = []; }; }; })
+
+    universal-ctags
+
 ]
