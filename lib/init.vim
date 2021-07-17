@@ -1,4 +1,3 @@
-" TODO: select COC commands from https://github.com/neoclide/coc.nvim#example-vim-configuration
 
 " set ttymouse=sgr
 set noswapfile
@@ -17,3 +16,12 @@ set cursorcolumn
 map <Leader>\ :set cursorcolumn!<Bar>set cursorline!<CR>
 
 set undofile
+
+" TODO: select COC commands from https://github.com/neoclide/coc.nvim#example-vim-configuration
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+hi ALEError cterm=italic ctermbg=16
