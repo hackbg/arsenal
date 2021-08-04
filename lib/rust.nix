@@ -1,12 +1,23 @@
-pkgs: with pkgs; [
+pkgs: let
+
+  mozillaRustOverlay = import (builtins.fetchTarball
+    https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz);
+
+  pkgs = import <nixpkgs> {
+    overlays = [ mozillaRustOverlay ]; };
+
+in with pkgs; [
+
+  (rustChannelOfTargets "nightly" "2021-08-04" ["wasm32-unknown-unknown"])
 
   # installs rust toolchain
-  rustup
+  #rustup
 
   # webassembly tools
   binaryen
   wabt
   wasm-pack
+  wasm-bindgen-cli
 
   # cargo-tarpaulin # 0.17.0 - broken, yanked from crates.io
   # build newer version
