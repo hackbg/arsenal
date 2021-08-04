@@ -10,4 +10,6 @@ pkgs: with pkgs; [
   ripgrep # find stuff in files fast
   tig # view git history interactively
   tmux # split terminals
+  just
+  bat
 ]
