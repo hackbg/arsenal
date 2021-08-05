@@ -4,7 +4,7 @@
 
 in pkgs.mkShell {
 
-  name = "sienna-dev-shell";
+  name = "arsenal";
 
   nativeBuildInputs = arsenal.packages [
     ./lib/util.nix
@@ -14,10 +14,9 @@ in pkgs.mkShell {
   ];
 
   shellHook = arsenal.environment [
-    ./lib/alias.sh
     ./lib/prompt.sh
+    ./lib/alias.sh
     ./lib/rust.sh
-    ./lib/fortune.sh
   ];
 
   EDITOR = "nvim";

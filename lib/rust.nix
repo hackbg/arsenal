@@ -8,9 +8,8 @@ pkgs: let
 
 in with pkgs; [
 
+  # rust toolchain
   (rustChannelOfTargets "nightly" "2021-08-04" ["wasm32-unknown-unknown"])
-
-  # installs rust toolchain
   #rustup
 
   # webassembly tools
