@@ -1,4 +1,4 @@
-{ pkgs?import<nixpkgs>{} }: {
+{ pkgs, ... }: {
   name = "hackbg-arsenal-gl";
   LIBCLANG_PATH = "${pkgs.llvmPackages.libclang}/lib";
   LD_LIBRARY_PATH = pkgs.lib.strings.makeLibraryPath (with pkgs; [
