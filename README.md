@@ -8,12 +8,12 @@ Unified shell platform based on Nix.
 
 ```bash
 git clone git@github.com:hackbg/arsenal.git
-./arsenal/install
+arsenal/install
 ```
 
 ### Standalone usage
 
-The `install` script will add the `arsenal` alias to your Bash profile.
+The `install` script will add the `arsenal` alias to your `~/.profile`.
 Run it to launch a shell with the tools contained in Arsenal:
 
 ```bash
