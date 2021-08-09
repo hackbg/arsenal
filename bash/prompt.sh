@@ -1,5 +1,5 @@
 export PS1=
-CATS=(😺 😸 😹 😻 😼 😽 🙀 😿 😾 ⚔️  🏀 ⚽ 🎩 🐰 🌙 )
+CATS=(😺 😸 😹 😻 😼 😽 🙀 😿 😾 ⚔️  ⚽ 🎩 🐰 🌙 )
 CAT=${CATS[$RANDOM % ${#CATS[@]}]}
 function success_indicator() {
   if [ $? -eq 0 ] ; then echo "🟢"; else echo "🔴 $?"; fi }

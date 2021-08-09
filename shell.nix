@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { overlays = [ (import ./overlay.nix) ]; } }: pkgs.mkShell {
+{ pkgs ? import <nixpkgs> { overlays = [ (import ./.) ]; } }: pkgs.mkShell {
 
   name = "hackbg-arsenal";
 
@@ -7,11 +7,12 @@
     hackbg.neovim
     hackbg.rust
     hackbg.util
+    #hackbg.vscode
   ];
 
   shellHook = ''
     ${builtins.readFile ./rust/rust.sh}
-    ${builtins.readFile ./util/prompt.sh}
+    ${builtins.readFile ./bash/prompt.sh}
     fortune|cowsay
   '';
 
