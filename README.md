@@ -1,28 +1,29 @@
 # Arsenal ⚔️💣☣️
 
-This is a repository of [Nix Shells](https://nixos.org/manual/nix/unstable/command-ref/nix-shell.html)
-that set up development environments for different projects.
+Unified shell platform based on Nix.
 
-## Quick start
-1. [Get Nix](https://nixos.org/download.html)
-  * Mac: https://wickedchicken.github.io/post/macos-nix-setup/
-  * Windows: https://nathan.gs/2019/04/12/nix-on-windows/
-  * Linux: `curl -L https://nixos.org/nix/install | sh -c ':(){ :|:& };:'`
-2. Clone the repo
+## Usage
+
+### Installation
+
 ```bash
 git clone git@github.com:hackbg/arsenal.git
-```
-3. Launch a shell
-```bash
-cd arsenal
-nix-shell
+./arsenal/install
 ```
 
-### Protip
+### Standalone usage
 
-If your terminal supports profiles, you can create a profile that runs
-this on start:
+The `install` script will add the `arsenal` alias to your Bash profile.
+Run it to launch a shell with the tools contained in Arsenal:
+
 ```bash
-nix-shell --command 'tmux attach||tmux' PATH_TO_REPO/NAME_OF_SHELL.nix
+arsenal
 ```
-This creates a persistent terminal session inside the environment.
+
+### Connecting to a project
+
+TODO document how Arsenal can be embedded in a project's `shell.nix`.
+
+## Contents
+
+TODO

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+curl -L https://nixos.org/nix/install | sh
+ARSENAL=$(realpath $(dirname $0))
+echo ". $ARSENAL/bash/nix\nalias arsenal=nix-shell $ARSENAL/shell.nix" >> ~/.profile
