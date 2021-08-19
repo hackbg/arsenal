@@ -8,6 +8,8 @@
     hackbg.rust
     hackbg.util
     #hackbg.vscode
+    pkg-config
+    openssl
   ];
 
   shellHook = ''

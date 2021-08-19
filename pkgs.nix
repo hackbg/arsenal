@@ -1,12 +1,16 @@
 { pkgs ? import <nixpkgs> {} }: let
+
   pkg = src: (pkgs.buildEnv ((import src) pkgs));
+
 in {
-  gl       = pkg ./gl;
   go       = pkg ./go;
-  neovim   = pkg ./neovim;
   rust     = pkg ./rust;
   js       = pkg ./js;
   solidity = pkg ./solidity;
+
+  gl       = pkg ./gl;
   util     = pkg ./util;
-  vscode   = pkg ./vscode;
+
+  neovim   = pkg ./ide/neovim.nix;
+  vscode   = pkg ./ide/vscode.nix;
 }
