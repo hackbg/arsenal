@@ -1,16 +1,19 @@
 { pkgs ? import <nixpkgs> {} }: let
 
-  pkg = src: (pkgs.buildEnv ((import src) pkgs));
+  env = src: (pkgs.buildEnv ((import src) pkgs));
+  pkg = src: (pkgs.callPackage (import src) {});
 
 in {
-  go       = pkg ./go;
-  rust     = pkg ./rust;
-  js       = pkg ./js;
-  solidity = pkg ./solidity;
+  go       = env ./go;
+  rust     = env ./rust;
+  js       = env ./js;
+  solidity = env ./solidity;
 
-  gl       = pkg ./gl;
-  util     = pkg ./util;
+  gl       = env ./gl;
+  util     = env ./util;
 
-  neovim   = pkg ./ide/neovim.nix;
-  vscode   = pkg ./ide/vscode.nix;
+  neovim   = env ./ide/neovim.nix;
+  vscode   = env ./ide/vscode.nix;
+
+  secretcli = pkg ./go/secretcli.nix;
 }

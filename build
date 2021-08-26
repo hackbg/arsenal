@@ -1,0 +1,3 @@
+#!/bin/sh
+Expr="(import <nixpkgs> {overlays=[(import ./.)];}).$1"
+time nix-build -E "$Expr" --show-trace --verbose

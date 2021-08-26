@@ -6,8 +6,10 @@
     hackbg.js
     hackbg.neovim
     hackbg.rust
+    hackbg.secretcli
     hackbg.util
     #hackbg.vscode
+
     pkg-config
     openssl
   ];
