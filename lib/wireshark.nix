@@ -1,6 +1,0 @@
-{wireshark
-,tcpdump
-,...}: [
-  wireshark
-  tcpdump
-]

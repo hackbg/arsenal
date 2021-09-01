@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+curl -L https://nixos.org/nix/install | sh
+ARSENAL=$(realpath $(dirname $0))
+echo "\nThe installer will now do the above for you..."
+printf "\n# https://github.com/hackbg/arsenal\n. $ARSENAL/bash/nix\n" | tee -a ~/.bashrc
+. $ARSENAL/bash/nix
+echo "\nReady."
