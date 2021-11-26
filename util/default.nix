@@ -17,7 +17,7 @@
     bat
     wireshark
     tcpdump
-    surf
+    #surf
     lsd
   ];
 }
