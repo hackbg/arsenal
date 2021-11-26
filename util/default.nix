@@ -6,6 +6,7 @@
     feh # image viewer
     fortune # a little whimsy helps
     git # opt-in to infinite branching undo history
+    htop
     neo-cowsay # see fortune
     nix-index # find stuff in nixpkgs
     plantuml # diagrams
@@ -17,5 +18,6 @@
     wireshark
     tcpdump
     surf
+    lsd
   ];
 }
