@@ -19,5 +19,6 @@
     tcpdump
     #surf
     lsd
+    entr
   ];
 }
