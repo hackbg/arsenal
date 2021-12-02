@@ -35,9 +35,10 @@ let
     /*languages*/
     tabular vim-markdown rust-vim vim-nix vim-vue
     vim-pug vim-toml vim-glsl plantuml-syntax
-    stylus cypher solidity
+    stylus cypher solidity yats-vim
     /*themes*/
-    gruvbox acme ];
+    gruvbox acme
+  ];
 in {
   name = "hackbg-arsenal-neovim";
   paths = [

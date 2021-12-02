@@ -4,6 +4,6 @@
     nodejs-14_x
     nodePackages.pnpm
     yarn
-    deno
+    #deno
   ];
 }
