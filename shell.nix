@@ -12,6 +12,10 @@
 
     pkg-config
     openssl
+
+    hackbg.lazydocker
+    hackbg.lazygit
+    hackbg.lazynpm
   ];
 
   shellHook = ''

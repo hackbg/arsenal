@@ -16,4 +16,8 @@ in {
   vscode   = env ./ide/vscode.nix;
 
   secretcli = pkg ./go/secretcli.nix;
+
+  lazydocker = pkg ./go/lazydocker.nix;
+  lazygit    = pkg ./go/lazygit.nix;
+  lazynpm    = pkg ./go/lazynpm.nix;
 }
