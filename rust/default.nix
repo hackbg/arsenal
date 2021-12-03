@@ -4,7 +4,7 @@
 
     # rust toolchain
     (rustChannelOfTargets "nightly" "2021-08-04" ["wasm32-unknown-unknown"])
-    ((import ./tarpaulin.nix) pkgs)
+    #((import ./tarpaulin.nix) pkgs)
 
     # webassembly tools
     binaryen
