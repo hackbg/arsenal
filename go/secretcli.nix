@@ -11,7 +11,7 @@ in pkgs.stdenv.mkDerivation {
   src =
     pkgs.fetchurl {
       url    = "https://github.com/${repo}/releases/download/${version}/${binary}";
-      sha256 = "1mlrns9d52ill3fn00fdxmp4r0lmmffz1w8qwpw7q1ac6y35ma8k";
+      sha256 = "sha256-e/jGFTrafSXapOoHLJfPKwfxXRSReIDyB9ODU2Z86Jk=";
     };
   nativeBuildInputs =
     with pkgs; [ autoPatchelfHook ];

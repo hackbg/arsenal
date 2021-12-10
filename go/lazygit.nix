@@ -1,17 +1,25 @@
-{pkgs ? import <nixpkgs> {}, ...}: let
+{ pkgs               ? import <nixpkgs> {}
+, patchGitHubRelease ? (import ../lib/patchGitHubRelease.nix) pkgs
+, forPlatform        ? (import ../lib/dispatchPlatform.nix)   pkgs
+, ...}:
+
+let
 
   name    = "lazygit";
   version = "0.31.4";
+  platform = forPlatform {
+    "x86_64-linux" = {
+      suffix = "Linux_x86_64";
+      sha256 = "02vhr6c8wncf9ilbh3xas83cq5zgdgwzys78y6jwcwhgvw3yrnv2";
+    };
+    "x86_64-darwin" = {
+      suffix = "Darwin_x86_64";
+      sha256 = "1874wcr2mfvcdllfxvk1yz8il8kd5azsvhcv69x1a85b8wkd04l2";
+    };
+  };
 
-  system   = pkgs.stdenv.hostPlatform.system;
-  platform = if system == "x86_64-linux"  then "Linux_x86_64"  else
-             if system == "x86_64-darwin" then "Darwin_x86_64" else
-             "unsupported_platform";
-
-  patchGitHubRelease = (import ../lib/patchGitHubRelease.nix) pkgs;
-
-in patchGitHubRelease
+in (patchGitHubRelease
   "${name}-${version}"
-  "https://github.com/jesseduffield/${name}/releases/download/v${version}/${name}_${version}_${platform}.tar.gz"
-  "02vhr6c8wncf9ilbh3xas83cq5zgdgwzys78y6jwcwhgvw3yrnv2"
-  ''mkdir -p $out/bin; cd $out/bin; tar -xf $src; ls -al''
+  "https://github.com/jesseduffield/${name}/releases/download/v${version}/${name}_${version}_${platform.suffix}.tar.gz"
+  platform.sha256
+  ''mkdir -p $out/bin; cd $out/bin; tar -xf $src; ls -al'')
