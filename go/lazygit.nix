@@ -14,7 +14,7 @@ let
     };
     "x86_64-darwin" = {
       suffix = "Darwin_x86_64";
-      sha256 = "02vhr6c8wncf9ilbh3xas83cq5zgdgwzys78y6jwcwhgvw3yr000";
+      sha256 = "1874wcr2mfvcdllfxvk1yz8il8kd5azsvhcv69x1a85b8wkd04l2";
     };
   };
 
