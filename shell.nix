@@ -21,6 +21,7 @@
   shellHook = ''
     ${builtins.readFile ./rust/rust.sh}
     ${builtins.readFile ./bash/prompt.sh}
+    ${builtins.readFile ./js/js.sh}
     fortune|cowsay
   '';
 
