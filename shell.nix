@@ -4,6 +4,8 @@
 
   propagatedBuildInputs = with pkgs; [
     hackbg.js
+    hackbg.nvm
+
     hackbg.neovim
     hackbg.rust
     hackbg.secretcli
@@ -22,6 +24,7 @@
     ${builtins.readFile ./rust/rust.sh}
     ${builtins.readFile ./bash/prompt.sh}
     ${builtins.readFile ./js/js.sh}
+    source "${pkgs.hackbg.nvm.out}/nvm.sh"
     fortune|cowsay
   '';
 
