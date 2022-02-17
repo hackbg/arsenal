@@ -27,7 +27,7 @@ let
     /*editing features*/
     #syntastic     # https://github.com/vim-syntastic/syntastic
     nerdcommenter # https://github.com/preservim/nerdcommenter
-    tagbar ale coc-nvim coc-rls coc-tsserver
+    tagbar ale #coc-nvim coc-rls coc-tsserver
     /*environment features*/
     nerdtree vim-nerdtree-tabs
     vim-tmux vim-tmux-navigator

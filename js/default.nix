@@ -3,8 +3,8 @@
   paths = with pkgs; [
     #nodejs-14_x
     nodejs-17_x
-    nodePackages.pnpm
-    yarn
+    nodePackages_latest.pnpm
+    nodePackages_latest.yarn
     #deno
   ];
 }

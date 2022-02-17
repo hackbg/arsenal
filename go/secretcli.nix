@@ -6,15 +6,15 @@
 let
 
   name    = "secretcli";
-  version = "v1.0.4";
+  version = "1.2.2";
   platform = forPlatform {
     "x86_64-linux" = {
-      binary = "secretcli-linux-amd64";
-      sha256 = "1mlrns9d52ill3fn00fdxmp4r0lmmffz1w8qwpw7q1ac6y35ma8k";
+      binary = "secretcli-Linux";
+      sha256 = "1p0fhr4avwcmb4p54v05c266v0bzbdlr8gs2b6nrzn94mpfhb56l";
     };
     "x86_64-darwin" = {
-      binary = "secretcli-darwin-10.6-amd64";
-      sha256 = "sha256-e/jGFTrafSXapOoHLJfPKwfxXRSReIDyB9ODU2Z86Jk=";
+      binary = "secretcli-macOS";
+      sha256 = "sha256-e/jGFTrafSXapOoHLJfPKwfxXRSReIDyB9ODU2006Jk=";
     };
   };
 
