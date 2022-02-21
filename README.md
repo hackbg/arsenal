@@ -1,6 +1,16 @@
+<div align="center">
+
+```
+“The Ono-Sendai; next year’s most expensive Hosaka computer;
+ a Sony monitor; a dozen disks of corporate-grade ice; a Braun coffeemaker.”
+                                               ― William Gibson, Neuromancer
+```
+
 # Arsenal ⚔️💣☣️
 
-Unified shell platform based on Nix.
+**Development environment based on Nix.**
+
+</div>
 
 ## Usage
 
