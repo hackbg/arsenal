@@ -5,6 +5,7 @@
     nodejs-17_x
     nodePackages_latest.pnpm
     nodePackages_latest.yarn
+    python3 # for gyp
     #deno
   ];
 }
