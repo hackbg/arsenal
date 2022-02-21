@@ -6,7 +6,9 @@
                                                ― William Gibson, Neuromancer
 ```
 
-# Arsenal ⚔️💣☣️
+![](./logo.svg)
+
+# Arsenal
 
 **Development environment based on Nix.**
 
