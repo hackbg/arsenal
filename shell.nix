@@ -23,6 +23,7 @@ in {
     hackbg.rust
     hackbg.secretcli
     hackbg.util
+    hackbg.clockify-cli
     #hackbg.vscode
 
     hackbg.lazydocker

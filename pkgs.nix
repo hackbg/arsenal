@@ -8,11 +8,12 @@
 in {
 
   # Golang and utilites written in it
-  go         = env ./go;
-  secretcli  = pkg ./go/secretcli.nix;
-  lazydocker = pkg ./go/lazydocker.nix;
-  lazygit    = pkg ./go/lazygit.nix;
-  lazynpm    = pkg ./go/lazynpm.nix;
+  go           = env ./go;
+  secretcli    = pkg ./go/secretcli.nix;
+  lazydocker   = pkg ./go/lazydocker.nix;
+  lazygit      = pkg ./go/lazygit.nix;
+  lazynpm      = pkg ./go/lazynpm.nix;
+  clockify-cli = pkg ./go/clockify-cli.nix;
 
   # Rust
   rust = env ./rust;
