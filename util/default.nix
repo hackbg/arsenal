@@ -9,7 +9,7 @@
     htop
     neo-cowsay # see fortune
     nix-index # find stuff in nixpkgs
-    plantuml # diagrams
+    #plantuml # diagrams
     ripgrep # find stuff in files fast
     tig # view git history interactively
     tmux # split terminals

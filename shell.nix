@@ -1,10 +1,5 @@
 # This file is the entry point of the Arsenal shell.
-
-let
-  overlays = [ (import ./default.nix) ];
-in {
-  pkgs ? import <nixpkgs> { inherit overlays; }
-}: pkgs.mkShell {
+{ pkgs ? import ./pin.nix { overlays = [ (import ./default.nix) ]; } }: pkgs.mkShell {
 
   name = "hackbg-arsenal";
 

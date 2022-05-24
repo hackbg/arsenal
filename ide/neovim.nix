@@ -37,7 +37,7 @@ let
     vim-pug vim-toml vim-glsl plantuml-syntax
     stylus cypher solidity yats-vim
     /*themes*/
-    gruvbox acme
+    gruvbox acme nord-nvim
   ];
 in {
   name = "hackbg-arsenal-neovim";

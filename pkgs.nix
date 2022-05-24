@@ -1,6 +1,6 @@
 # This file defines the extra packages contained by the `hackbg` package group.
 
-{ pkgs ? import <nixpkgs> {} }: let
+{ pkgs ? import ./pin.nix {} }: let
 
   env = src: (pkgs.buildEnv ((import src) pkgs));
   pkg = src: (pkgs.callPackage (import src) {});
