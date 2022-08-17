@@ -8,7 +8,7 @@ self: super: let
     overlays = [
       # One overlay provides a recent version of Rust.
       (import (builtins.fetchTarball (let
-        commit = "e1f7540fc0a8b989fb8cf701dc4fd7fc76bcf168";
+        commit = "0508a66e28a5792fdfb126bbf4dec1029c2509e0";
       in {
         url    = "https://github.com/mozilla/nixpkgs-mozilla/archive/${commit}.tar.gz";
         sha256 = "1b6p0rly0rywq60ks84ghc0n5zrqiafc2r64nlbnlkh9whmh5fmj";
