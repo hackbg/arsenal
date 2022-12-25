@@ -33,9 +33,10 @@ let
     vim-tmux vim-tmux-navigator
     bufexplorer airline
     /*languages*/
+    (vimPlugins.nvim-treesitter.withPlugins (_: vimPlugins.nvim-treesitter.all))
     tabular vim-markdown rust-vim vim-nix vim-vue
     vim-pug vim-toml vim-glsl plantuml-syntax
-    stylus cypher solidity yats-vim
+    stylus cypher solidity zig-vim nim-vim
     /*themes*/
     gruvbox acme nord-nvim
   ];

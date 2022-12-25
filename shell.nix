@@ -25,9 +25,14 @@
     hackbg.lazygit
     hackbg.lazynpm
 
+    hexedit
+    python310
+    python310Packages.pip
+
   ];
 
   shellHook = ''
+    export PYTHONPATH=$HOME/.local/lib/python3.10/site-packages:$PYTHONPATH
     ${builtins.readFile ./rust/rust.sh}
     ${builtins.readFile ./bash/prompt.sh}
     ${builtins.readFile ./js/js.sh}

@@ -11,7 +11,7 @@ self: super: let
         commit = "0508a66e28a5792fdfb126bbf4dec1029c2509e0";
       in {
         url    = "https://github.com/mozilla/nixpkgs-mozilla/archive/${commit}.tar.gz";
-        sha256 = "1b6p0rly0rywq60ks84ghc0n5zrqiafc2r64nlbnlkh9whmh5fmj";
+        sha256 = "1nswjmya72g0qriidc2pkl54zn5sg0xp36vdq0ylspca56izivxc";
       })))
 
       # The other provides a recent version of Neovim.
