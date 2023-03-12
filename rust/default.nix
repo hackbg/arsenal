@@ -3,7 +3,7 @@
   paths = with pkgs; [
 
     # rust toolchain
-    (rustChannelOfTargets "nightly" "2022-08-11" ["wasm32-unknown-unknown"])
+    (rustChannelOfTargets "nightly" "2023-01-08" ["wasm32-unknown-unknown"])
     #((import ./tarpaulin.nix) pkgs)
 
     # webassembly tools

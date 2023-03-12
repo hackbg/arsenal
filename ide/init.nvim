@@ -1,0 +1,31 @@
+" set ttymouse=sgr
+set noswapfile
+set backspace=indent,eol,start mouse=a
+set nowrap ts=2 sts=2 sw=2 et ai cc=100 foldcolumn=0
+set fillchars+=vert:│
+set splitbelow splitright
+set cursorline
+set cursorcolumn
+set nofoldenable
+set undofile
+set showtabline=2
+
+" remember cursor position
+augroup cursor
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+autocmd VimResized * wincmd =
+
+map ; :
+map <C-s> :w<CR>
+map <Leader>\ :set cursorcolumn!<Bar>set cursorline!<CR>
+map <Leader><Tab> :NvimTreeToggle<CR>
+map <Leader>' :TagbarToggle<CR>
+map <Leader>h :nohl<cr>
+map <C-_> :Commentary<CR>
+
+colorscheme gruvbox
+hi ALEError cterm=italic ctermbg=16
+hi Todo ctermbg=16 ctermfg=200
