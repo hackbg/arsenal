@@ -3,8 +3,8 @@
   paths = with pkgs; [
     #nodejs-14_x
     nodejs-18_x
-    nodePackages_latest.pnpm
-    nodePackages_latest.yarn
+    nodePackages.pnpm
+    nodePackages.yarn
     python310 # for gyp
     #deno
   ];

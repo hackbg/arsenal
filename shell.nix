@@ -1,5 +1,4 @@
-# This file is the entry point of the Arsenal shell.
-{ pkgs ? import ./pkgs.nix { overlays = [ (import ./default.nix) ]; } }: pkgs.mkShell {
+{ ... }: let pkgs = import <nixpkgs> { overlays = import ./overlays.nix; }; in pkgs.mkShell {
 
   name = "hackbg-arsenal";
 

@@ -1,7 +1,5 @@
 { pkgs, fetchFromGitHub, stdenv, ... }: let
-
   version = "v0.39.1";
-
 in stdenv.mkDerivation {
   name = "nvm";
   inherit version;

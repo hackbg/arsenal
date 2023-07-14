@@ -28,4 +28,4 @@ map <C-_> :Commentary<CR>
 
 colorscheme gruvbox
 hi ALEError cterm=italic ctermbg=16
-hi Todo ctermbg=16 ctermfg=200
+hi Todo ctermbg=16 ctermfg=200 guifg=#ff8800 guibg=0

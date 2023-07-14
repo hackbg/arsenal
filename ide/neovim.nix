@@ -1,6 +1,4 @@
-{ neovim, vimPlugins, vimUtils, fetchFromGitHub, universal-ctags, ... }:
-
-let
+{ neovim, vimPlugins, vimUtils, fetchFromGitHub, universal-ctags, ... }: let
 
   plugins = let
     plug = pname: version: src: vimUtils.buildVimPluginFrom2Nix { inherit pname version src; };
