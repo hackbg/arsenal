@@ -27,6 +27,7 @@
     hexedit
     python310
     python310Packages.pip
+    jq
 
   ];
 
