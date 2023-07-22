@@ -27,7 +27,9 @@
     hexedit
     python310
     python310Packages.pip
-    jq
+    ripgrep # find in files
+    bfs     # find file
+    jq      # parse json
 
   ];
 
