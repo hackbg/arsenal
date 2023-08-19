@@ -27,9 +27,16 @@
     hexedit
     python310
     python310Packages.pip
-    ripgrep # find in files
-    bfs     # find file
-    jq      # parse json
+
+    ripgrep   # find in files
+    bfs       # find file
+    fd        # find file
+    jq        # parse json
+    sd        # find and replace
+    tokei     # line counter
+    bandwidth # net monitor
+    grex      # regex from examples
+    delta     # diff viewer
 
   ];
 
