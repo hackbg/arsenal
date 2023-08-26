@@ -24,10 +24,10 @@
     hackbg.lazygit
     hackbg.lazynpm
 
-    hexedit
     python310
     python310Packages.pip
 
+    hexedit   # hex editor
     ripgrep   # find in files
     bfs       # find file
     fd        # find file
@@ -37,6 +37,8 @@
     bandwidth # net monitor
     grex      # regex from examples
     delta     # diff viewer
+    kondo     # artifact cleaner
+    peep      # compact pager
 
   ];
 
