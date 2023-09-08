@@ -7,5 +7,6 @@
     nodePackages.yarn
     python310 # for gyp
     #deno
+    bun
   ];
 }
