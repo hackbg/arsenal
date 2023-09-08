@@ -8,5 +8,6 @@
     python310 # for gyp
     #deno
     bun
+    swc
   ];
 }
