@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+MAIN=$(dirname $(realpath $0))
+cd ~
+ln -s "$MAIN/shell" "${1:-arsenal}"
+printf "\nRun with ~/${1:-arsenal}.\n"

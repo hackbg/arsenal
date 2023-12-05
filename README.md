@@ -10,13 +10,23 @@
 
 # Arsenal
 
-**Development environment based on Nix.**
+**Opinionated Nix-based dev environment for Web2 and Web3 work.**
 
 </div>
 
-## Usage
+## Requirements
+
+* Nix
+
+## Install
 
 ```bash
 git clone git@github.com:hackbg/arsenal.git
-nix-shell arsenal/shell.nix
+arsenal/install
+```
+
+## Run
+
+```bash
+~/arsenal
 ```
