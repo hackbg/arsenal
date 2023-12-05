@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+cd $(dirname $(realpath $0))
+pwd
+ls -al
+git status
+nix-shell --command "tmux -f tmux.conf attach || tmux -f tmux.conf"
