@@ -12,14 +12,13 @@ pkgs: with pkgs; [
   hackbg.neovim
   hackbg.rust
   hackbg.bcrypt-tool
+  hackbg.lazydocker
+  hackbg.lazygit
+  hackbg.lazynpm
   #hackbg.secretcli
   #hackbg.util
   #hackbg.clockify-cli
   #hackbg.vscode
-
-  #hackbg.lazydocker
-  #hackbg.lazygit
-  #hackbg.lazynpm
 
   python310
   python310Packages.pip
