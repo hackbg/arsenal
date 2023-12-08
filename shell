@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-COMMAND="tmux -f tmux.conf attach || tmux -f tmux.conf"
-SHELL="$(dirname $(realpath $0))/shell.nix"
 printf "~ a r s e n a l ~\nloading...\n"
+SELF=`realpath $0`
+BASE=`dirname $SELF`
+TMUX="tmux -f $BASE/tmux.conf"
+COMMAND="$TMUX attach || $TMUX"
+SHELL="$BASE/shell.nix"
 nix-shell $@ --command "$COMMAND" "$SHELL"
