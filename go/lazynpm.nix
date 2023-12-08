@@ -1,12 +1,6 @@
-{ pkgs               ? import <nixpkgs> {}
-, patchGitHubRelease ? (import ../lib/patchGitHubRelease.nix) pkgs
-, forPlatform        ? (import ../lib/dispatchPlatform.nix)   pkgs
-, ...}:
-
-let
-
-  name    = "lazynpm";
-  version = "0.1.4";
+{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
+  name     = "lazynpm";
+  version  = "0.1.4";
   platform = forPlatform {
     "x86_64-linux" = {
       suffix = "Linux_x86_64";
@@ -17,9 +11,7 @@ let
       sha256 = "0b5xpdkh1nvh0pbgjyjfzv67lmqp9m7jzf58m10kkni7zvksvksr";
     };
   };
-
-in (patchGitHubRelease
-  "${name}-${version}"
+in gitHubRelease "${name}-${version}"
   "https://github.com/jesseduffield/${name}/releases/download/v${version}/${name}_${version}_${platform.suffix}.tar.gz"
   platform.sha256
-  ''mkdir -p $out/bin; cd $out/bin; tar -xf $src; ls -al'')
+  ''mkdir -p $out/bin; cd $out/bin; tar -xf $src; ls -al''

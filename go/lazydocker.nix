@@ -1,10 +1,4 @@
-{ pkgs ? import <nixpkgs> {}
-, patchGitHubRelease ? (import ../lib/patchGitHubRelease.nix) pkgs
-, forPlatform        ? (import ../lib/dispatchPlatform.nix)   pkgs
-, ...}:
-
-let
-
+{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
   name     = "lazydocker";
   version  = "0.12";
   platform = forPlatform {
@@ -17,9 +11,7 @@ let
       sha256 = "1shld5kxv0insz8xqyahxhjwybn3bhnn57kn25p3pcaxxkf71ynf";
     };
   };
-
-in (patchGitHubRelease
-  "${name}-${version}"
+in gitHubRelease "${name}-${version}"
   "https://github.com/jesseduffield/${name}/releases/download/v${version}/${name}_${version}_${platform.suffix}.tar.gz"
   platform.sha256
-  ''mkdir -p $out/bin; cd $out/bin; tar -xf $src; ls -al'')
+  ''mkdir -p $out/bin; cd $out/bin; tar -xf $src; ls -al''

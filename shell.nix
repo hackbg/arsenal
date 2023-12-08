@@ -1,47 +1,7 @@
-{ ... }: let pkgs = import <nixpkgs> { overlays = import ./overlays.nix; }; in pkgs.mkShell {
-
+{...}: let
+  pkgs = import <nixpkgs> { overlays = import ./overlays.nix; };
+in pkgs.mkShell {
   name = "hackbg-arsenal";
-
-  # The packages in `propagatedBuildInputs` will be available in the shell.
-  # The ones prefixed with `hackbg` are defined in `pkgs.nix` and added to
-  # `pkgs` by the overlay defined in `default.nix`.
-  propagatedBuildInputs = with pkgs; [
-
-    pkg-config
-    openssl
-
-    hackbg.js
-    hackbg.nvm
-
-    hackbg.neovim
-    hackbg.rust
-    hackbg.secretcli
-    hackbg.util
-    hackbg.clockify-cli
-    #hackbg.vscode
-
-    hackbg.lazydocker
-    hackbg.lazygit
-    hackbg.lazynpm
-
-    python310
-    python310Packages.pip
-
-    hexedit   # hex editor
-    ripgrep   # find in files
-    bfs       # find file
-    fd        # find file
-    jq        # parse json
-    sd        # find and replace
-    tokei     # line counter
-    bandwidth # net monitor
-    grex      # regex from examples
-    delta     # diff viewer
-    kondo     # artifact cleaner
-    peep      # compact pager
-
-  ];
-
   shellHook = ''
     export PYTHONPATH=$HOME/.local/lib/python3.10/site-packages:$PYTHONPATH
     ${builtins.readFile ./rust/rust.sh}
@@ -50,8 +10,8 @@
     source "${pkgs.hackbg.nvm.out}/nvm.sh"
     fortune|cowsay
   '';
-
   EDITOR  = "nvim";
   BROWSER = "surf";
-
+  # The packages in `propagatedBuildInputs` will be available in the shell.
+  propagatedBuildInputs = import ./tools.nix pkgs;
 }

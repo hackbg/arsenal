@@ -1,10 +1,4 @@
-{ pkgs               ? import <nixpkgs> {}
-, patchGitHubRelease ? (import ../lib/patchGitHubRelease.nix) pkgs
-, forPlatform        ? (import ../lib/dispatchPlatform.nix)   pkgs
-, ...}:
-
-let
-
+{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
   name    = "secretcli";
   version = "1.3.1";
   platform = forPlatform {
@@ -17,9 +11,7 @@ let
       sha256 = "sha256-Wy+oAFF3aCYvsC9DXxuHyqKR7warqBZX6DrPk/np7kE=";
     };
   };
-
-in (patchGitHubRelease
-  "${name}-${version}"
+in gitHubRelease "${name}-${version}"
   "https://github.com/enigmampc/SecretNetwork/releases/download/v${version}/${platform.binary}"
   platform.sha256
-  ''ls -al; install -m755 -D $src $out/bin/secretcli'')
+  ''ls -al; install -m755 -D $src $out/bin/secretcli''
