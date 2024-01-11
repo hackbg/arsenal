@@ -1,7 +1,7 @@
 { neovim, vimPlugins, vimUtils, fetchFromGitHub, universal-ctags, ... }: let
 
   plugins = let
-    plug = pname: version: src: vimUtils.buildVimPluginFrom2Nix { inherit pname version src; };
+    plug = pname: version: src: vimUtils.buildVimPlugin { inherit pname version src; };
     gh = owner: repo: rev: sha256: fetchFromGitHub { inherit owner repo rev sha256; };
   in with vimPlugins; [
     /*editing features*/
