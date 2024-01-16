@@ -29,3 +29,4 @@ require("nvim-tree").setup()
 --})
 
 vim.cmd("colorscheme everforest")
+vim.cmd("hi ErrorText guibg=#200000 ctermbg=16 gui=none guisp=#e67e80")

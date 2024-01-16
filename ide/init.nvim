@@ -24,8 +24,10 @@ map <Leader>\ :set cursorcolumn!<Bar>set cursorline!<CR>
 map <Leader><Tab> :NvimTreeToggle<CR>
 map <Leader>' :TagbarToggle<CR>
 map <Leader>h :nohl<cr>
+map <Leader>e :ALEDetail<cr>
 map <C-_> :Commentary<CR>
 
 colorscheme gruvbox
 hi ALEError cterm=italic ctermbg=16
+hi ErrorText guibg=#200000 ctermbg=16 gui=none guisp=#e67e80
 hi Todo ctermbg=16 ctermfg=200 guifg=#ff8800 guibg=0
