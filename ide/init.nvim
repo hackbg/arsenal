@@ -25,6 +25,7 @@ map <Leader><Tab> :NvimTreeToggle<CR>
 map <Leader>' :TagbarToggle<CR>
 map <Leader>h :nohl<cr>
 map <Leader>e :ALEDetail<cr>
+map <Leader>n :ALENext<cr>
 map <C-_> :Commentary<CR>
 
 colorscheme gruvbox
