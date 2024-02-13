@@ -1,14 +1,16 @@
-{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
-  name     = "lazynpm";
-  version  = "0.1.4";
+{ pkgs ? import <nixpkgs> {}, ... }:
+  with import ../../base.nix pkgs;
+let
+  name     = "lazygit";
+  version  = "0.31.4";
   platform = forPlatform {
     "x86_64-linux" = {
       suffix = "Linux_x86_64";
-      sha256 = "0cvn4bygi51819jqvxyc3asqm16zd7kwv7r7b3fwzyx9dxv254rx";
+      sha256 = "02vhr6c8wncf9ilbh3xas83cq5zgdgwzys78y6jwcwhgvw3yrnv2";
     };
     "x86_64-darwin" = {
       suffix = "Darwin_x86_64";
-      sha256 = "0b5xpdkh1nvh0pbgjyjfzv67lmqp9m7jzf58m10kkni7zvksvksr";
+      sha256 = "1874wcr2mfvcdllfxvk1yz8il8kd5azsvhcv69x1a85b8wkd04l2";
     };
   };
 in gitHubRelease "${name}-${version}"

@@ -1,1 +1,3 @@
-self: super: with super.lib; (foldl' (flip extends) (_: super) (map import (import ./overlays.nix))) self
+pkgs: oldPkgs: with oldPkgs.lib; let
+  overlays = (map import (import ./overlays.nix));
+in (foldl' (flip extends) (_: oldPkgs) overlays) pkgs

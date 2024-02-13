@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
+{ pkgs ? import <nixpkgs> {}, ... }:
+  with import ../../base.nix pkgs;
+let
   name    = "secretcli";
   version = "1.3.1";
   platform = forPlatform {

@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
+{ pkgs ? import <nixpkgs> {}, ... }:
+  with import ../../base.nix pkgs;
+let
   name     = "bcrypt-tool";
   version  = "1.1.5";
   platform = forPlatform {

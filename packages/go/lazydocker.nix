@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
+{ pkgs ? import <nixpkgs> {}, ... }:
+  with import ../../base.nix pkgs;
+let
   name     = "lazydocker";
   version  = "0.12";
   platform = forPlatform {

@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {}, ... }: with import ../base.nix pkgs; let
+{ pkgs ? import <nixpkgs> {}, ... }:
+  with import ../../base.nix pkgs;
+let
   name     = "clockify-cli";
   version  = "0.32.2";
   platform = forPlatform {
