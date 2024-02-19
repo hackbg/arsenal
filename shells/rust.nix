@@ -1,9 +1,10 @@
 {
-  pkgs?(import<nixpkgs>{}),
-  extraBuildInputs?[],
-  extraNativeBuildInputs?[],
+  pkgs ? (import <nixpkgs> { overlays = ../overlays.nix; }),
+  extraBuildInputs ? [],
+  extraNativeBuildInputs ? [],
+  extraShellHook ? "",
   ...
-}:pkgs.mkShell{
+}: pkgs.mkShell {
 
   name = "rust";
 
@@ -12,5 +13,8 @@
 
   nativeBuildInputs = with pkgs; [ cargo rustc ]
     ++ extraNativeBuildInputs;
+
+  shellHook = ""
+    + extraShellHook;
 
 }
